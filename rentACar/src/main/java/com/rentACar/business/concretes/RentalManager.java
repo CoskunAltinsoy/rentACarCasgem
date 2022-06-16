@@ -56,7 +56,6 @@ public class RentalManager implements RentalService{
 		checkDates(createRentalRequest.getReturnedDate(), createRentalRequest.getPickupDate());	
 		
 		Car car = this.carRepository.findById(createRentalRequest.getCarId());
-	    //car.setId(createRentalRequest.getCarId());
 		car.setState(3);
 		
 		rental.setPickupCityId(pickupCityId);
@@ -91,15 +90,7 @@ public class RentalManager implements RentalService{
 		Rental rental = this.modelMapperService.forRequest().map(updateRentalRequest, Rental.class);
 		checkDates(updateRentalRequest.getReturnedDate(), updateRentalRequest.getPickupDate());
 		Car car = this.carRepository.findById(updateRentalRequest.getCarId());
-		
-		LocalDate localDate = LocalDate.now();
-		if (localDate.equals(rental.getReturnedDate())) {
-			car.setState(1);
-			}
-		
-		//if ((rental.getPickupCityId().equals(rental.getReturnCityId()))) {
-		  //  rental.setTotalPrice(rental.getTotalPrice() - 750);
-			//}
+		checkCarStateUpdate(updateRentalRequest.getReturnedDate(),car.getId());
 		 
 		int totalDays = (rental.getReturnedDate().getDayOfYear() - rental.getPickupDate().getDayOfYear());
 		rental.setTotalDays(totalDays);
@@ -144,4 +135,14 @@ public class RentalManager implements RentalService{
 		}
 	
 	}
+	
+	private void checkCarStateUpdate(LocalDate dateReturn, int id) {
+		LocalDate localDate = LocalDate.now();
+		Car car = this.carRepository.findById(id);
+		if ((localDate.equals(dateReturn))) {
+			car.setState(1);
+		}
+		
+	}
+	
 }

@@ -47,9 +47,8 @@ public class MaintenanceManager implements MaintenanceService{
 		Maintenance maintenance = this.modelMapperService.forRequest().map(createMaintenanceRequest, Maintenance.class);
 		
 		Car car = this.carRepository.findById(createMaintenanceRequest.getCarId());
-		//car.setId(createMaintenanceRequest.getCarId());
 		car.setState(2);
-		
+	
 		maintenance.setCar(car);
 		
 		this.maintenanceRepository.save(maintenance);
@@ -70,11 +69,7 @@ public class MaintenanceManager implements MaintenanceService{
 		Maintenance maintenance = this.modelMapperService.forRequest().map(updateMaintenanceRequest, Maintenance.class);
 		
 		Car car = this.carRepository.findById(updateMaintenanceRequest.getCarId());
-		car.setId(updateMaintenanceRequest.getCarId());
-		LocalDate localDate = LocalDate.now();
-		if (localDate.equals(updateMaintenanceRequest.getDateReturn())) {
-			car.setState(1);
-		}
+		checkCarStateUpdate(updateMaintenanceRequest.getDateReturn(),car.getId());
 			
 		maintenance.setCar(car);
 		
@@ -103,6 +98,15 @@ public class MaintenanceManager implements MaintenanceService{
 		Car car = this.carRepository.findById(id);
 		if (car.getState() != 1) {
 			throw new BusinessException("MAINTENANCES.CAR.STATES.INCORRECT");
+		}
+		
+	}
+	
+	private void checkCarStateUpdate(LocalDate dateReturn, int id) {
+		LocalDate localDate = LocalDate.now();
+		Car car = this.carRepository.findById(id);
+		if ((localDate.equals(dateReturn))) {
+			car.setState(1);
 		}
 		
 	}
