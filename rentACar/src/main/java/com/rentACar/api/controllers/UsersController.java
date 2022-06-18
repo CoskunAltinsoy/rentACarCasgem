@@ -50,6 +50,11 @@ public class UsersController {
 	public DataResult<List<GetAllUsersResponse>> getAll() {
 		return this.userService.getAll();
 	}
+	
+	@GetMapping("/getallbypage/{pageNo}/{pageSize}")
+	public DataResult<List<GetAllUsersResponse>> getAll(@PathVariable("pageNo") int pageNo, @PathVariable("pageSize") int pageSize) {
+		return this.userService.getAll(pageNo, pageSize);
+	}
 		
 
 }
