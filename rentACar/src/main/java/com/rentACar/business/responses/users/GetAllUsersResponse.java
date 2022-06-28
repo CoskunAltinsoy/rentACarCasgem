@@ -19,7 +19,7 @@ public class GetAllUsersResponse {
 	private String lastName;
 		
 	//@Size(min = 11)
-	private String tcNo;
+	private String nationalIdentity;
 		
 	private String email;
 		

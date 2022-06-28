@@ -1,5 +1,6 @@
 package com.rentACar.business.concretes;
 
+import java.rmi.RemoteException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -13,6 +14,8 @@ import com.rentACar.business.requests.users.CreateUserRequest;
 import com.rentACar.business.requests.users.UpdateUserRequest;
 import com.rentACar.business.responses.users.GetAllUsersResponse;
 import com.rentACar.business.responses.users.GetUserResponse;
+import com.rentACar.core.utilities.adapters.abstracts.UserCheckService;
+import com.rentACar.core.utilities.exceptions.BusinessException;
 import com.rentACar.core.utilities.mapping.ModelMapperService;
 import com.rentACar.core.utilities.results.DataResult;
 import com.rentACar.core.utilities.results.Result;
@@ -26,18 +29,22 @@ public class UserManager implements UserService{
 
 	private UserRepository userRepository;
 	private ModelMapperService modelMapperService;
+	private UserCheckService userCheckService;
 	
 	
 	@Autowired
-	public UserManager(UserRepository userRepository, ModelMapperService modelMapperService
-			) {
+	public UserManager(UserRepository userRepository, ModelMapperService modelMapperService,
+			UserCheckService userCheckService) {
 		super();
 		this.userRepository = userRepository;
 		this.modelMapperService = modelMapperService;
+		this.userCheckService = userCheckService;
 	}
 	
 	@Override
-	public Result add(CreateUserRequest createUserRequest)  {
+	public Result add(CreateUserRequest createUserRequest) throws NumberFormatException, RemoteException  {
+		checkFromMernis(Long.parseLong(createUserRequest.getNationalIdentity()), createUserRequest.getFirstName(),
+				createUserRequest.getLastName(), createUserRequest.getDateOfBirth().getYear());
 		User user = this.modelMapperService.forRequest().map(createUserRequest, User.class);
 		this.userRepository.save(user);
 		return new SuccessResult("USER.ADDED");
@@ -80,5 +87,10 @@ public class UserManager implements UserService{
 						.map(user,GetAllUsersResponse.class)).collect(Collectors.toList());
 		return new SuccessDataResult<List<GetAllUsersResponse>>(response);
 	}
-
+	
+	private void checkFromMernis(Long tcNo, String firstName, String lastName, int dateOfBirth) throws RemoteException {
+		if (!(this.userCheckService.checkIfUserRealPerson(tcNo, firstName, lastName, dateOfBirth))) {
+			throw new BusinessException("VALIDATION.INCORRECT");
+		}
+	}
 }

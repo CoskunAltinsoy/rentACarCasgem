@@ -14,7 +14,7 @@ public class GetUserResponse {
 	private int id;
 	private String firstName;
 	private String lastName;		
-	private String tcNo;
+	private String nationalIdentity;
 	private String email;		
 	private LocalDate dateOfBirth;	
 	private String password;

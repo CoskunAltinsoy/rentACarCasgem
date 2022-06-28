@@ -35,8 +35,8 @@ public class User {
 	@Column(name = "last_name")
 	private String lastName;
 	
-	@Column(name = "tcno")
-	private String tcNo;
+	@Column(name = "national_identity")
+	private String nationalIdentity;
 	
 	@Column(name = "email")
 	private String email;

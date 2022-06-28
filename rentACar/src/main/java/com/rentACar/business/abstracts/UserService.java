@@ -1,5 +1,6 @@
 package com.rentACar.business.abstracts;
 
+import java.rmi.RemoteException;
 import java.util.List;
 
 import com.rentACar.business.requests.users.CreateUserRequest;
@@ -12,7 +13,7 @@ import com.rentACar.entities.concretes.User;
 
 public interface UserService {
 
-	Result add(CreateUserRequest createUserRequest);
+	Result add(CreateUserRequest createUserRequest) throws NumberFormatException, RemoteException;
 	Result delete(int id);
 	Result update(UpdateUserRequest updateUserRequest);
 	DataResult<List<GetAllUsersResponse>> getAll();

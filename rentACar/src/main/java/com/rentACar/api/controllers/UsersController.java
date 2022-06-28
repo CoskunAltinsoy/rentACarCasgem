@@ -1,5 +1,6 @@
 package com.rentACar.api.controllers;
 
+import java.rmi.RemoteException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,7 @@ public class UsersController {
 	}
 	
 	@PostMapping("/add")
-    public Result add(@RequestBody CreateUserRequest createUserRequest){
+    public Result add(@RequestBody CreateUserRequest createUserRequest) throws NumberFormatException, RemoteException{
 		return this.userService.add(createUserRequest);
 	}
 	
