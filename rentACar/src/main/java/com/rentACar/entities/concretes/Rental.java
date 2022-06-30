@@ -61,5 +61,5 @@ public class Rental {
 	private City returnCityId;
 	
 	@OneToMany(mappedBy = "rental")
-	private List<AdditionalService> additionalServices;
+	private List<OrderedAdditionalService> additionalServices;
 }

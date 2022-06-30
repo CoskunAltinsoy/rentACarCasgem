@@ -13,15 +13,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.rentACar.business.concretes.RentalManager;
-import com.rentACar.business.requests.rentals.CreateRentalRequest;
-import com.rentACar.business.requests.rentals.UpdateRentalRequest;
+import com.rentACar.business.requests.rentals.CreateRentalRequestForCorporateCustomer;
+import com.rentACar.business.requests.rentals.UpdateRentalRequestForCorporateCustomer;
 import com.rentACar.business.responses.rentals.GetAllRentalsResponse;
 import com.rentACar.business.responses.rentals.GetRentalResponse;
 import com.rentACar.core.utilities.results.DataResult;
 import com.rentACar.core.utilities.results.Result;
 
 @RestController
-@RequestMapping("/api/rentals")
+@RequestMapping("/api/rentals/")
 public class RentalsController {
 	
 	private RentalManager rentalManager;
@@ -32,27 +32,27 @@ public class RentalsController {
 		this.rentalManager = rentalManager;
 	}
 	
-	@PostMapping("/add")
-	public Result add(@RequestBody CreateRentalRequest createRentalRequest) {
+	@PostMapping("add")
+	public Result add(@RequestBody CreateRentalRequestForCorporateCustomer createRentalRequest) {
 		return this.rentalManager.add(createRentalRequest);
 	}
 	
-	@DeleteMapping("/delete/{id}")
+	@DeleteMapping("delete/{id}")
 	public Result add(@PathVariable("id") int id) {
 		return this.rentalManager.delete(id);
 	}
 	
-	@PutMapping("/update")
-	public Result update(@RequestBody UpdateRentalRequest updateRentalRequest) {
+	@PutMapping("update")
+	public Result update(@RequestBody UpdateRentalRequestForCorporateCustomer updateRentalRequest) {
 		return this.rentalManager.update(updateRentalRequest);
 	}
 	
-	@GetMapping("/getall")
+	@GetMapping("getall")
 	public DataResult<List<GetAllRentalsResponse>> getAll(){
 		return this.rentalManager.getAll();
 	}
 	
-	@GetMapping("/getById/{id}")
+	@GetMapping("getById/{id}")
 	public DataResult<GetRentalResponse> getById(@PathVariable("id") int id){
 		return this.rentalManager.getById(id);
 	}

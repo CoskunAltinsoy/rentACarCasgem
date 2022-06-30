@@ -21,7 +21,7 @@ import com.rentACar.core.utilities.results.DataResult;
 import com.rentACar.core.utilities.results.Result;
 
 @RestController
-@RequestMapping("/api/maintenances")
+@RequestMapping("/api/maintenances/")
 public class MaintenancesController {
 
 	private MaintenanceService maintenanceService;
@@ -32,27 +32,27 @@ public class MaintenancesController {
 		this.maintenanceService = maintenanceService;
 	}
 	
-	@PostMapping("/add")
+	@PostMapping("add")
     public Result add(@RequestBody CreateMaintenanceRequest createMaintenanceRequest) {
 		return this.maintenanceService.add(createMaintenanceRequest);
 	}
 	
-	@DeleteMapping("/delete/{id}")
+	@DeleteMapping("delete/{id}")
     public Result delete(@PathVariable("id") int id) {
 		return this.maintenanceService.delete(id);
 	}
 	
-	@PutMapping("/update")
+	@PutMapping("update")
     public Result update(@RequestBody UpdateMaintenanceRequest updateMaintenanceRequest) {
 		return this.maintenanceService.update(updateMaintenanceRequest);
 	}
 	
-	@GetMapping("/getall")
+	@GetMapping("getall")
 	public DataResult<List<GetAllMaintenancesResponse>> getAll() {
 		return this.maintenanceService.getAll();
 	}
 	
-	@GetMapping("/getbyid/{id}")
+	@GetMapping("getbyid/{id}")
 	public DataResult<GetMaintenanceResponse> getById(@PathVariable int id) {
 		return this.maintenanceService.getById(id);
 	}

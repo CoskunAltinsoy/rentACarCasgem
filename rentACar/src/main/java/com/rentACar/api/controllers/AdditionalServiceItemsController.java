@@ -14,7 +14,7 @@ import com.rentACar.business.requests.additionalServiceItems.UpdateAdditionalSer
 import com.rentACar.core.utilities.results.Result;
 
 @RestController
-@RequestMapping("/api/additionalServiceItems")
+@RequestMapping("/api/additionalServiceItems/")
 public class AdditionalServiceItemsController {
 	
 	private AdditionalServiceItemService additionalServiceItemService;
@@ -24,17 +24,17 @@ public class AdditionalServiceItemsController {
 		this.additionalServiceItemService = additionalServiceItemService;
 	}
 	
-	@PostMapping("/add")
+	@PostMapping("add")
 	public Result add(@RequestBody CreateAdditionalServiceItemRequest additionalServiceItemRequest) {
 		return this.additionalServiceItemService.add(additionalServiceItemRequest);
 	}
 	
-	@DeleteMapping("/delete/{id}")
+	@DeleteMapping("delete/{id}")
 	public Result delete(@PathVariable("id") int id) {
 		return this.additionalServiceItemService.delete(id);
 	}
 	
-	@PutMapping("/update")
+	@PutMapping("update")
 	public Result update(@RequestBody UpdateAdditionalServiceItemRequest updateAdditionalServiceItemRequest) {
 		return this.additionalServiceItemService.update(updateAdditionalServiceItemRequest);
 	}

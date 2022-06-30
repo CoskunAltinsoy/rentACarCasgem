@@ -21,7 +21,7 @@ import com.rentACar.core.utilities.results.DataResult;
 import com.rentACar.core.utilities.results.Result;
 
 @RestController
-@RequestMapping("/api/brands")
+@RequestMapping("/api/brands/")
 public class BrandsController {
 	
 	private BrandService brandService;
@@ -31,33 +31,29 @@ public class BrandsController {
 		this.brandService = brandService;
 	}
 
-	@GetMapping("/sayhello")//endpoint
-	public String sayHello() {
-		return "Hello Spring";
-	}
 
-	@PostMapping("/add")
+	@PostMapping("add")
 	public Result add(@RequestBody CreateBrandRequest createBrandRequest) {
 		return this.brandService.add(createBrandRequest);		
 	}
 	
-	@DeleteMapping("/delete/{id}")
+	@DeleteMapping("delete/{id}")
 	public Result delete(@PathVariable("id") int id) {
 		return this.brandService.delete(id);
 	}
 	
-	@PutMapping("/update")
+	@PutMapping("update")
 	public Result update(@RequestBody UpdateBrandRequest updateBrandRequest) {
 		return this.brandService.update(updateBrandRequest);	
 	}
 	
-	@GetMapping("/getall")
+	@GetMapping("getall")
 	public DataResult<List<GetAllBrandsResponse>> getAll() {
 		return this.brandService.getAll();
 		
 	}
 	
-	@GetMapping("/getbyid/{id}")
+	@GetMapping("getbyid/{id}")
 	public DataResult<GetBrandResponse> geyById(@PathVariable int id) {
 		return this.brandService.getById(id);
 	}

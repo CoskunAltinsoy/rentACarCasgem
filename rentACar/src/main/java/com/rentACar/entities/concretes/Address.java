@@ -1,13 +1,12 @@
 package com.rentACar.entities.concretes;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -18,22 +17,21 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-//@JsonIgnoreProperties({"hibernateLazyInitializer","handler","cars"})
-@Table(name="additional_service_items")
-public class AdditionalServiceItem {
+@Table(name = "addresses")
+public class Address {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private int id;
 	
-	@Column(name = "name")
-	private String name;
+	@Column(name = "contact_address")
+	private String contactAddress;
 	
-	@Column(name = "price")
-	private double price;
-	
-	
-	@OneToMany(mappedBy = "additionalServiceItem")
-	private List<OrderedAdditionalService> additionalServices;
+	@Column(name = "billing_address")
+	private String billingAddress;
+
+	@ManyToOne
+	@JoinColumn(name = "customer_id")
+	private Customer customer;
 }

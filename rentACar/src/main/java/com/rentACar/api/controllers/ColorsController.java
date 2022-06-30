@@ -21,7 +21,7 @@ import com.rentACar.core.utilities.results.DataResult;
 import com.rentACar.core.utilities.results.Result;
 
 @RestController
-@RequestMapping("/api/colors")
+@RequestMapping("/api/colors/")
 public class ColorsController {
 	
 	private ColorService colorService;
@@ -32,27 +32,27 @@ public class ColorsController {
 		this.colorService = colorService;
 	}
 	
-	@PostMapping("/add")
+	@PostMapping("add")
 	public Result add(@RequestBody CreateColorRequest createColorRequest) {
 		return this.colorService.add(createColorRequest);
 	}
 	
-	@DeleteMapping("/delete/{id}")
+	@DeleteMapping("delete/{id}")
 	public Result delete(@PathVariable("id") int id ) {
 		return this.colorService.delete(id);
 	}
 	
-	@PutMapping("/update")
+	@PutMapping("update")
 	public Result delete(@RequestBody UpdateColorRequest updateColorRequest) {
 		return this.colorService.update(updateColorRequest);
 	}
 	
-	@GetMapping("/getall")
+	@GetMapping("getall")
 	public DataResult<List<GetAllColorsResponse>> getAll() {
 		return this.colorService.getAll();
 	}
 	
-	@GetMapping("/getbyid/{id}")
+	@GetMapping("getbyid/{id}")
 	public DataResult<GetColorResponse> geyById(@PathVariable("id") int id) {
 		return this.colorService.getById(id);
 	}

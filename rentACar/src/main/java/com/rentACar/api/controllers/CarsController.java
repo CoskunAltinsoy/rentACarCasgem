@@ -23,7 +23,7 @@ import com.rentACar.core.utilities.results.DataResult;
 import com.rentACar.core.utilities.results.Result;
 
 @RestController
-@RequestMapping("/api/cars")
+@RequestMapping("/api/cars/")
 public class CarsController {
 
 	private CarService carService;
@@ -34,28 +34,28 @@ public class CarsController {
 		this.carService = carService;
 	}
 	
-	@PostMapping("/add")
+	@PostMapping("add")
 	public Result add(@RequestBody @Valid CreateCarRequest createCarRequest) {
 		 return this.carService.add(createCarRequest);
 		
 	}
 	
-	@DeleteMapping("/delete/{id}")
+	@DeleteMapping("delete/{id}")
 	public Result add(@PathVariable("id") int id) {
 		return this.carService.delete(id);
 	}
 	
-	@PutMapping("/update")
+	@PutMapping("update")
 	public Result update(@RequestBody UpdateCarRequest updateCarRequest) {
 		return this.carService.update(updateCarRequest);
 	}
 	
-	@GetMapping("/getall")
+	@GetMapping("getall")
 	public DataResult<List<GetAllCarsResponse>> getAll() {
 		return this.carService.getAll();
 	}
 	
-	@GetMapping("/getbyid/{id}")
+	@GetMapping("getbyid/{id}")
 	public DataResult<GetCarResponse> geyById(@PathVariable int id) {
 		return this.carService.getById(id);
 	}

@@ -8,28 +8,28 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.rentACar.business.abstracts.AdditionalServiceService;
-import com.rentACar.business.requests.additionalServices.CreateAdditionalServiceRequest;
+import com.rentACar.business.abstracts.OrderedAdditionalServiceService;
+import com.rentACar.business.requests.orderedAdditionalServices.CreateOrderedAdditionalServiceRequest;
 import com.rentACar.core.utilities.results.Result;
 
 @RestController
-@RequestMapping("/api/additionalServices")
+@RequestMapping("/api/additionalServices/")
 public class AdditionalServicesController {
 
-	private AdditionalServiceService additionalServiceService;
+	private OrderedAdditionalServiceService additionalServiceService;
 
 	@Autowired
-	public AdditionalServicesController(AdditionalServiceService additionalServiceService) {
+	public AdditionalServicesController(OrderedAdditionalServiceService additionalServiceService) {
 		super();
 		this.additionalServiceService = additionalServiceService;
 	}
 	
-	@PostMapping("/add")
-	public Result add(@RequestBody CreateAdditionalServiceRequest createAdditionalServiceRequest) {
+	@PostMapping("add")
+	public Result add(@RequestBody CreateOrderedAdditionalServiceRequest createAdditionalServiceRequest) {
 		return this.additionalServiceService.add(createAdditionalServiceRequest);
 	}
 	
-	@DeleteMapping("/delete/{id}")
+	@DeleteMapping("delete/{id}")
 	public Result delete(@PathVariable("id") int id) {
 		return this.additionalServiceService.delete(id);
 	}
