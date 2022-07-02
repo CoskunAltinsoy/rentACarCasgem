@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class GetRentalResponse {
-
+public class GetAllRentalsResponseForCorporateCustomer {
+	
 	private int id;
 	private LocalDate pickupDate;
 	private LocalDate returnedDate;
@@ -19,4 +19,5 @@ public class GetRentalResponse {
 	private int carId;
 	private int pickupCityId;
 	private int returnCityId;
+	private int customerId;
 }

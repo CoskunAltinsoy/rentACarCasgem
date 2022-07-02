@@ -1,4 +1,4 @@
-package com.rentACar.business.responses.users;
+package com.rentACar.business.responses.individualCustomers;
 
 import java.time.LocalDate;
 
@@ -9,21 +9,13 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class GetAllUsersResponse {
+public class GetIndividualCustomerResponse {
 
 	private int id;
-	//@Size(min = 2)
 	private String firstName;
-		
-    //@Size(min = 2)
-	private String lastName;
-		
-	//@Size(min = 11)
+	private String lastName;		
 	private String nationalIdentity;
-		
-	private String email;
-		
-	private LocalDate dateOfBirth;
-		
+	private String email;		
+	private LocalDate dateOfBirth;	
 	private String password;
 }

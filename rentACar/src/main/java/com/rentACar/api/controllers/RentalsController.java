@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.rentACar.business.concretes.RentalManager;
 import com.rentACar.business.requests.rentals.CreateRentalRequestForCorporateCustomer;
 import com.rentACar.business.requests.rentals.UpdateRentalRequestForCorporateCustomer;
-import com.rentACar.business.responses.rentals.GetAllRentalsResponse;
-import com.rentACar.business.responses.rentals.GetRentalResponse;
+import com.rentACar.business.responses.rentals.GetAllRentalsResponseForIndividualCustomer;
+import com.rentACar.business.responses.rentals.GetRentalResponseForIndividualCustomer;
 import com.rentACar.core.utilities.results.DataResult;
 import com.rentACar.core.utilities.results.Result;
 
@@ -48,12 +48,12 @@ public class RentalsController {
 	}
 	
 	@GetMapping("getall")
-	public DataResult<List<GetAllRentalsResponse>> getAll(){
+	public DataResult<List<GetAllRentalsResponseForIndividualCustomer>> getAll(){
 		return this.rentalManager.getAll();
 	}
 	
 	@GetMapping("getById/{id}")
-	public DataResult<GetRentalResponse> getById(@PathVariable("id") int id){
+	public DataResult<GetRentalResponseForIndividualCustomer> getById(@PathVariable("id") int id){
 		return this.rentalManager.getById(id);
 	}
 	

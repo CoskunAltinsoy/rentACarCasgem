@@ -25,7 +25,7 @@ public class OrderedAdditionalService {
 	@Column(name = "id")
 	private int id;
 	
-	@Column(name ="total_Day")
+	@Column(name ="total_day")
 	private int totalDay;
 	
 	@Column(name = "total_price")

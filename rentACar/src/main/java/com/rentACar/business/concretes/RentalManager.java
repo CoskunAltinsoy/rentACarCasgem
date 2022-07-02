@@ -13,8 +13,8 @@ import com.rentACar.business.requests.rentals.CreateRentalRequestForCorporateCus
 import com.rentACar.business.requests.rentals.CreateRentalRequestForIndividualCustomer;
 import com.rentACar.business.requests.rentals.UpdateRentalRequestForCorporateCustomer;
 import com.rentACar.business.requests.rentals.UpdateRentalRequestForIndividualCustomer;
-import com.rentACar.business.responses.rentals.GetAllRentalsResponse;
-import com.rentACar.business.responses.rentals.GetRentalResponse;
+import com.rentACar.business.responses.rentals.GetAllRentalsResponseForIndividualCustomer;
+import com.rentACar.business.responses.rentals.GetRentalResponseForIndividualCustomer;
 import com.rentACar.core.utilities.exceptions.BusinessException;
 import com.rentACar.core.utilities.mapping.ModelMapperService;
 import com.rentACar.core.utilities.results.DataResult;

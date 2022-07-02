@@ -10,6 +10,8 @@ import lombok.NoArgsConstructor;
 public class GetAdditionalServiceResponse {
 
 	private int id;
+	private int totalDay;
+	private int totalPrice;
 	private int additionalServiceItemId;
 	private int rentalId;
 }

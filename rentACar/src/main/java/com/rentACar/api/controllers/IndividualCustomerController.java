@@ -17,7 +17,7 @@ import com.rentACar.business.abstracts.IndividualCustomerService;
 import com.rentACar.business.requests.individualCustomers.CreateIndividualCustomerRequest;
 import com.rentACar.business.requests.users.CreateUserRequest;
 import com.rentACar.business.requests.users.UpdateUserRequest;
-import com.rentACar.business.responses.users.GetAllUsersResponse;
+import com.rentACar.business.responses.individualCustomers.GetAllIndividualCustomerResponse;
 import com.rentACar.core.utilities.results.DataResult;
 import com.rentACar.core.utilities.results.Result;
 
@@ -49,12 +49,12 @@ public class IndividualCustomerController {
 	}
 	
 	@GetMapping("getall")
-	public DataResult<List<GetAllUsersResponse>> getAll() {
+	public DataResult<List<GetAllIndividualCustomerResponse>> getAll() {
 		return this.userService.getAll();
 	}
 	
 	@GetMapping("getallbypage/{pageNo}/{pageSize}")
-	public DataResult<List<GetAllUsersResponse>> getAll(@PathVariable("pageNo") int pageNo, @PathVariable("pageSize") int pageSize) {
+	public DataResult<List<GetAllIndividualCustomerResponse>> getAll(@PathVariable("pageNo") int pageNo, @PathVariable("pageSize") int pageSize) {
 		return this.userService.getAll(pageNo, pageSize);
 	}
 		

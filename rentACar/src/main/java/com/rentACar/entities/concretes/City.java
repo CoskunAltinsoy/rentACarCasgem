@@ -18,7 +18,6 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-//@JsonIgnoreProperties({"hibernateLazyInitializer","handler","cars"})
 @Table(name = "cities")
 public class City {
 
