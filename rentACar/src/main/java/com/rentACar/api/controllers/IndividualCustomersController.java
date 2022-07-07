@@ -20,29 +20,29 @@ import com.rentACar.core.utilities.results.Result;
 
 @RestController
 @RequestMapping("/api/individualCustomers/")
-public class IndividualCustomerController {
+public class IndividualCustomersController {
 	
-	private IndividualCustomerService userService;
+	private IndividualCustomerService individualCustomerService;
 
 	@Autowired
-	public IndividualCustomerController(IndividualCustomerService userService) {
+	public IndividualCustomersController(IndividualCustomerService individualCustomerService) {
 		super();
-		this.userService = userService;
+		this.individualCustomerService = individualCustomerService;
 	}
 	
 	@PostMapping("add")
     public Result add(@RequestBody CreateIndividualCustomerRequest createIndividualCustomerRequest) throws NumberFormatException, RemoteException{
-		return this.userService.add(createIndividualCustomerRequest);
+		return this.individualCustomerService.add(createIndividualCustomerRequest);
 	}
 	
 	@DeleteMapping("delete/{id}")
     public Result delete(@PathVariable("id") int id) {
-		return this.userService.delete(id);
+		return this.individualCustomerService.delete(id);
 	}
 	
 	@PutMapping("update")
     public Result update(@RequestBody UpdateIndividualCustomerRequest updateIndividualCustomerRequest) {
-		return this.userService.update(updateIndividualCustomerRequest);
+		return this.individualCustomerService.update(updateIndividualCustomerRequest);
 	}
 	
 //	@GetMapping("getall")

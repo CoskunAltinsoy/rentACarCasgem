@@ -13,25 +13,25 @@ import com.rentACar.business.requests.orderedAdditionalServices.CreateOrderedAdd
 import com.rentACar.core.utilities.results.Result;
 
 @RestController
-@RequestMapping("/api/additionalServices/")
-public class AdditionalServicesController {
+@RequestMapping("/api/orderedadditionalServices/")
+public class OrderedAdditionalServicesController {
 
-	private OrderedAdditionalServiceService additionalServiceService;
+	private OrderedAdditionalServiceService orderedAdditionalServiceService;
 
 	@Autowired
-	public AdditionalServicesController(OrderedAdditionalServiceService additionalServiceService) {
+	public OrderedAdditionalServicesController(OrderedAdditionalServiceService orderedAdditionalServiceService) {
 		super();
-		this.additionalServiceService = additionalServiceService;
+		this.orderedAdditionalServiceService = orderedAdditionalServiceService;
 	}
 	
 	@PostMapping("add")
 	public Result add(@RequestBody CreateOrderedAdditionalServiceRequest createAdditionalServiceRequest) {
-		return this.additionalServiceService.add(createAdditionalServiceRequest);
+		return this.orderedAdditionalServiceService.add(createAdditionalServiceRequest);
 	}
 	
 	@DeleteMapping("delete/{id}")
 	public Result delete(@PathVariable("id") int id) {
-		return this.additionalServiceService.delete(id);
+		return this.orderedAdditionalServiceService.delete(id);
 	}
 	
 	/*@PutMapping("/update")
