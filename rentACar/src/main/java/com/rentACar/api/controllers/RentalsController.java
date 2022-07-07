@@ -1,10 +1,7 @@
 package com.rentACar.api.controllers;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -14,10 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.rentACar.business.concretes.RentalManager;
 import com.rentACar.business.requests.rentals.CreateRentalRequestForCorporateCustomer;
+import com.rentACar.business.requests.rentals.CreateRentalRequestForIndividualCustomer;
 import com.rentACar.business.requests.rentals.UpdateRentalRequestForCorporateCustomer;
-import com.rentACar.business.responses.rentals.GetAllRentalsResponseForIndividualCustomer;
-import com.rentACar.business.responses.rentals.GetRentalResponseForIndividualCustomer;
-import com.rentACar.core.utilities.results.DataResult;
+import com.rentACar.business.requests.rentals.UpdateRentalRequestForIndividualCustomer;
 import com.rentACar.core.utilities.results.Result;
 
 @RestController
@@ -32,9 +28,14 @@ public class RentalsController {
 		this.rentalManager = rentalManager;
 	}
 	
-	@PostMapping("add")
-	public Result add(@RequestBody CreateRentalRequestForCorporateCustomer createRentalRequest) {
-		return this.rentalManager.add(createRentalRequest);
+	@PostMapping("addForIndividualCustomer")
+	public Result addForIndividualCustomer(@RequestBody CreateRentalRequestForIndividualCustomer createRentalRequestForIndividualCustomer) {
+		return this.rentalManager.addForIndividualCustomer(createRentalRequestForIndividualCustomer);
+	}
+	
+	@PostMapping("addForCorporateCustomer")
+	public Result addForCorporateCustomer(@RequestBody CreateRentalRequestForCorporateCustomer createRentalRequestForCorporateCustomer) {
+		return this.rentalManager.addForCorporateCustomer(createRentalRequestForCorporateCustomer);
 	}
 	
 	@DeleteMapping("delete/{id}")
@@ -42,20 +43,25 @@ public class RentalsController {
 		return this.rentalManager.delete(id);
 	}
 	
-	@PutMapping("update")
-	public Result update(@RequestBody UpdateRentalRequestForCorporateCustomer updateRentalRequest) {
-		return this.rentalManager.update(updateRentalRequest);
+	@PutMapping("updateForIndividualCustomer")
+	public Result updateForIndividualCustomer(@RequestBody UpdateRentalRequestForIndividualCustomer updateRentalRequestForIndividualCustomer) {
+		return this.rentalManager.updateForIndividualCustomer(updateRentalRequestForIndividualCustomer);
 	}
 	
-	@GetMapping("getall")
-	public DataResult<List<GetAllRentalsResponseForIndividualCustomer>> getAll(){
-		return this.rentalManager.getAll();
+	@PutMapping("updateForIndividualCustomer")
+	public Result updateForCorporateCustomer(@RequestBody UpdateRentalRequestForCorporateCustomer updateRentalRequestForCorporateCustomer) {
+		return this.rentalManager.updateForCorporateCustomer(updateRentalRequestForCorporateCustomer);
 	}
 	
-	@GetMapping("getById/{id}")
-	public DataResult<GetRentalResponseForIndividualCustomer> getById(@PathVariable("id") int id){
-		return this.rentalManager.getById(id);
-	}
+//	@GetMapping("getAll")
+//	public DataResult<List<GetAllRentalsResponseForIndividualCustomer>> getAll(){
+//		return this.rentalManager.getAll();
+//	}
+//	
+//	@GetMapping("getById/{id}")
+//	public DataResult<GetRentalResponseForIndividualCustomer> getById(@PathVariable("id") int id){
+//		return this.rentalManager.getById(id);
+//	}
 	
 
 }

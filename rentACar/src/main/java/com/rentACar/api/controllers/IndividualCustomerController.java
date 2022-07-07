@@ -15,14 +15,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.rentACar.business.abstracts.IndividualCustomerService;
 import com.rentACar.business.requests.individualCustomers.CreateIndividualCustomerRequest;
-import com.rentACar.business.requests.users.CreateUserRequest;
-import com.rentACar.business.requests.users.UpdateUserRequest;
-import com.rentACar.business.responses.individualCustomers.GetAllIndividualCustomerResponse;
-import com.rentACar.core.utilities.results.DataResult;
+import com.rentACar.business.requests.individualCustomers.UpdateIndividualCustomerRequest;
 import com.rentACar.core.utilities.results.Result;
 
 @RestController
-@RequestMapping("/api/users/")
+@RequestMapping("/api/individualCustomers/")
 public class IndividualCustomerController {
 	
 	private IndividualCustomerService userService;
@@ -44,19 +41,19 @@ public class IndividualCustomerController {
 	}
 	
 	@PutMapping("update")
-    public Result update(@RequestBody UpdateUserRequest updateUserRequest) {
-		return this.userService.update(updateUserRequest);
+    public Result update(@RequestBody UpdateIndividualCustomerRequest updateIndividualCustomerRequest) {
+		return this.userService.update(updateIndividualCustomerRequest);
 	}
 	
-	@GetMapping("getall")
-	public DataResult<List<GetAllIndividualCustomerResponse>> getAll() {
-		return this.userService.getAll();
-	}
+//	@GetMapping("getall")
+//	public DataResult<List<GetAllIndividualCustomerResponse>> getAll() {
+//		return this.userService.getAll();
+//	}
 	
-	@GetMapping("getallbypage/{pageNo}/{pageSize}")
-	public DataResult<List<GetAllIndividualCustomerResponse>> getAll(@PathVariable("pageNo") int pageNo, @PathVariable("pageSize") int pageSize) {
-		return this.userService.getAll(pageNo, pageSize);
-	}
+//	@GetMapping("getallbypage/{pageNo}/{pageSize}")
+//	public DataResult<List<GetAllIndividualCustomerResponse>> getAll(@PathVariable("pageNo") int pageNo, @PathVariable("pageSize") int pageSize) {
+//		return this.userService.getAll(pageNo, pageSize);
+//	}
 		
 
 }
