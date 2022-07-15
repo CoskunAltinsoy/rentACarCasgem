@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 @Table(name="customers")
-public class Customer {
+public class Customer extends User{
 
 	@OneToMany(mappedBy = "customer")
 	List<Rental> rentals; 

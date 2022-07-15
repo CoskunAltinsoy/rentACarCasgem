@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import com.rentACar.business.abstracts.IndividualCustomerService;
 import com.rentACar.business.requests.individualCustomers.CreateIndividualCustomerRequest;
 import com.rentACar.business.requests.individualCustomers.UpdateIndividualCustomerRequest;
-import com.rentACar.business.responses.individualCustomers.GetAllIndividualCustomerResponse;
+import com.rentACar.business.responses.individualCustomers.GetAllIndividualCustomersResponse;
 import com.rentACar.business.responses.individualCustomers.GetIndividualCustomerResponse;
 import com.rentACar.core.utilities.adapters.abstracts.UserCheckService;
 import com.rentACar.core.utilities.exceptions.BusinessException;

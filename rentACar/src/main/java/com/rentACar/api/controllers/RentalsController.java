@@ -48,7 +48,7 @@ public class RentalsController {
 		return this.rentalManager.updateForIndividualCustomer(updateRentalRequestForIndividualCustomer);
 	}
 	
-	@PutMapping("updateForIndividualCustomer")
+	@PutMapping("updateForCorporateCustomer")
 	public Result updateForCorporateCustomer(@RequestBody UpdateRentalRequestForCorporateCustomer updateRentalRequestForCorporateCustomer) {
 		return this.rentalManager.updateForCorporateCustomer(updateRentalRequestForCorporateCustomer);
 	}

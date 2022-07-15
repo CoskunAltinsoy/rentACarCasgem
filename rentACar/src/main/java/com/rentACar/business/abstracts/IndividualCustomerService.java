@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.rentACar.business.requests.individualCustomers.CreateIndividualCustomerRequest;
 import com.rentACar.business.requests.individualCustomers.UpdateIndividualCustomerRequest;
-import com.rentACar.business.responses.individualCustomers.GetAllIndividualCustomerResponse;
+import com.rentACar.business.responses.individualCustomers.GetAllIndividualCustomersResponse;
 import com.rentACar.business.responses.individualCustomers.GetIndividualCustomerResponse;
 import com.rentACar.core.utilities.results.DataResult;
 import com.rentACar.core.utilities.results.Result;

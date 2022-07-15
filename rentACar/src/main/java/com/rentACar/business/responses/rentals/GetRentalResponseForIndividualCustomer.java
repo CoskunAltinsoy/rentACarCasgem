@@ -19,5 +19,5 @@ public class GetRentalResponseForIndividualCustomer {
 	private int carId;
 	private int pickupCityId;
 	private int returnCityId;
-	private int customerId;
+	private int individualCustomerId;
 }

@@ -1,7 +1,5 @@
 package com.rentACar.business.responses.individualCustomers;
 
-import java.time.LocalDate;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class GetAllIndividualCustomerResponse {
+public class GetAllIndividualCustomersResponse {
 
 	private int id;	
 	private String firstName;

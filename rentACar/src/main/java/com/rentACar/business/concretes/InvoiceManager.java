@@ -1,6 +1,7 @@
 package com.rentACar.business.concretes;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.rentACar.business.abstracts.InvoiceService;
 import com.rentACar.business.requests.invoices.CreateInvoiceRequestForIndividualCustomer;
@@ -14,6 +15,7 @@ import com.rentACar.entities.concretes.Invoice;
 import com.rentACar.entities.concretes.OrderedAdditionalService;
 import com.rentACar.entities.concretes.Rental;
 
+@Service
 public class InvoiceManager implements InvoiceService{
 
 	private InvoiceRepository invoiceRepository;
